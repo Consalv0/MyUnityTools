@@ -14,6 +14,7 @@ public class ActivatedActionRemake {
 	[SerializeField] Object _target;
 	[SerializeField] Parameter[] parameters = new Parameter[3];
 	[SerializeField] int _methodIndex;
+	[SerializeField] InvokeMask invokeMask = 0;
 
 	MethodInfo selectedMethodInfo;
 	object[] parameterObjects;
@@ -22,7 +23,6 @@ public class ActivatedActionRemake {
 
 	System.Action action0;
 	System.Action<object> action1;
-	System.Func<object> func1;
 
 	public Object target {
 		get { return _target; }
@@ -53,30 +53,26 @@ public class ActivatedActionRemake {
 	}
 
 	public void Invoke() {
-		if (selectedMethodInfo == null) return;
-		if (selectedMethodInfo.IsGenericMethod) {
-			if (parameterObjects.Any()) {
-				selectedMethodInfo.Invoke(target, parameterObjects);
-			} else {
+		if (selectedMethodInfo == null || invokeMode == 0) return;
+		if ((invokeMask & InvokeMask.NoInvoke) > 0) return;
+		if ((invokeMask & InvokeMask.MethodIsGeneric) > 0) {
+			if ((invokeMask & InvokeMask.NoParameters) > 0) {
 				selectedMethodInfo.Invoke(target, null);
+			} else {
+				selectedMethodInfo.Invoke(target, parameterObjects);
 			}
-		} else if (!parameterObjects.Any()) {
-			if (selectedMethodInfo.ReturnType.Equals(typeof(void))) {
+		} else if ((invokeMask & InvokeMask.NoParameters) > 0) {
+			if ((invokeMask & InvokeMask.ReturnsVoid) > 0) {
 				action0.Invoke();
 			} else {
 				selectedMethodInfo.Invoke(target, null);
 			}
-		} else if (parameterObjects.Count() == 1) {
-			if (selectedMethodInfo.ReturnType.Equals(typeof(void))) {
-				if (parameterObjects[0] == null) {
+		} else if ((invokeMask & InvokeMask.OneParameter) > 0) {
+			if ((invokeMask & InvokeMask.ReturnsVoid) > 0) {
+				if ((invokeMask & InvokeMask.ParameterSubclassOfObject) > 0) {
 					selectedMethodInfo.Invoke(target, parameterObjects);
 				} else {
-					if (parameterObjects[0] != null && (parameterObjects[0].GetType().Equals(typeof(Object)) 
-					    || parameterObjects[0].GetType().IsSubclassOf(typeof(Object)))) {
-						selectedMethodInfo.Invoke(target, parameterObjects);
-					} else {
-						action1.Invoke(parameterObjects[0]);
-					}
+					action1.Invoke(parameterObjects[0]);
 				}
 			} else {
 				selectedMethodInfo.Invoke(target, parameterObjects);
@@ -217,23 +213,31 @@ public class ActivatedActionRemake {
 	}
 
 	void UpdateDelegate() {
-		if (selectedMethodInfo == null) return;
+		invokeMask = 0;
+		if (selectedMethodInfo == null) { invokeMask = InvokeMask.NoInvoke; return; }
+		if (selectedMethodInfo.ReturnType.Equals(typeof(void))) { invokeMask |= InvokeMask.ReturnsVoid; }
 		if (selectedMethodInfo.IsGenericMethod) {
-			if (parameters[0].stringParameter == "") return;
+			if (parameters[0].stringParameter == "") { invokeMask = InvokeMask.NoInvoke; return; }
 			var type = System.Type.GetType(parameters[0].stringParameter);
-			if (type == null) { Debug.LogWarning("'" + parameters[0].stringParameter + "' Type does not exist, Try to use an assebly"); return; }
+			if (type == null) { Debug.LogWarning("'" + parameters[0].stringParameter + "' Type does not exist, Try to use an assebly");
+				invokeMask = InvokeMask.NoInvoke; return; }
 			MethodInfo genericFromObject = selectedMethodInfo.MakeGenericMethod(System.Type.GetType(parameters[0].stringParameter));
 			selectedMethodInfo = genericFromObject;
+			if (selectedMethodInfo.GetParameters().Any()) { invokeMask |= InvokeMask.NoParameters; }
+			invokeMask |= InvokeMask.MethodIsGeneric;
 			return;
 		} else if (!selectedMethodInfo.GetParameters().Any()) {
+			invokeMask |= InvokeMask.NoParameters;
 			if (selectedMethodInfo.ReturnType.Equals(typeof(void))) {
 				action0 = selectedMethodInfo.CreateAction(target);
 			}
 		} else if (selectedMethodInfo.GetParameters().Count() == 1) {
-			var type = parameterObjects[0].GetType();
+			var type = selectedMethodInfo.GetParameters()[0].ParameterType;
 			if (selectedMethodInfo.ReturnType.Equals(typeof(void))) {
 				// if (type.Equals(typeof(Object))) { action1 = selectedMethodInfo.CreateAction<Object>(target); }
-				if (parameters[0].objectParameter != null && type.Equals(typeof(Object))) { action1 = selectedMethodInfo.CreateAction<Object>(target); }
+				if (type.Equals(typeof(Object))) {
+					action1 = selectedMethodInfo.CreateAction<Object>(target); }
+				else if (type.IsSubclassOf(typeof(Object))) { invokeMask |= InvokeMask.ParameterSubclassOfObject; }
 				else if (type.Equals(typeof(Vector3))) { action1 = selectedMethodInfo.CreateAction<Vector3>(target); }
 				else if (type.Equals(typeof(Vector2))) { action1 = selectedMethodInfo.CreateAction<Vector2>(target); }
 				else if (type.Equals(typeof(Color))) { action1 = selectedMethodInfo.CreateAction<Color>(target); }
@@ -243,15 +247,23 @@ public class ActivatedActionRemake {
 				else if (type.Equals(typeof(double))) { action1 = selectedMethodInfo.CreateAction<double>(target); }
 				else if (type.Equals(typeof(int))) { action1 = selectedMethodInfo.CreateAction<int>(target); }
 			}
+			invokeMask |= InvokeMask.OneParameter;
 		} else if (selectedMethodInfo.GetParameters().Count() > 1) {
-			//if (selectedMethodInfo.ReturnType.Equals(typeof(void))) {
-				
-			//}
+			//if (selectedMethodInfo.ReturnType.Equals(typeof(void))) { }
+			invokeMask |= InvokeMask.TwoOrMoreParameters;
+		} else {
+			invokeMask = InvokeMask.NoInvoke;
 		}
 	}
 
-	System.Action<object> GetAction<T>(MethodInfo methodInfo, object trgt) {
-		return methodInfo.CreateAction<T>(trgt);
+	[System.Flags] public enum InvokeMask {
+		NoInvoke = 1 << 0,
+		ReturnsVoid = 1 << 1,
+		MethodIsGeneric = 1 << 2,
+		NoParameters = 1 << 3,
+		OneParameter = 1 << 4 & ~NoParameters,
+		TwoOrMoreParameters = 1 << 5 & ~NoParameters,
+		ParameterSubclassOfObject = 1 << 6 | OneParameter
 	}
 
 	[System.Serializable]
@@ -315,7 +327,7 @@ public class ActivatedActionRemake {
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ActivatedActionRemake), true)]
 public class ActivatedActionRemakeDrawer : PropertyDrawer {
-	SerializedProperty target, methodNames, methodIndex, invokeMode;
+	SerializedProperty target, methodNames, methodIndex, invokeMode, invokeMask;
 	Rect propertyRect, headerRect, targetRect, tabRect, prefixRect, navigationRect, bodyRect;
 	Rect invokeModeRect, methodRect;
 	ActivatedActionRemake activatedAction;
@@ -360,6 +372,9 @@ public class ActivatedActionRemakeDrawer : PropertyDrawer {
 		}
 		EditorGUI.LabelField(navigationRect, EditorGUIUtility.IconContent("UnityEditor.HierarchyWindow"));
 
+		//EditorGUI.MaskField(invokeModeRect, invokeMask.intValue,
+		                    //new string[] { "NoInvoke", "ReturnsVoid", "MethodIsGeneric", "NoParameters",
+		                     //"OneParameter", "TwoOrMoreParameters", "ParameterSubclassOfObject" });
 		EditorGUI.PropertyField(invokeModeRect, invokeMode, new GUIContent());
 		methodIndex.intValue = EditorGUI.Popup(methodRect, "", methodIndex.intValue, activatedAction.methodNames);
 		if (GUI.changed) {
@@ -395,6 +410,7 @@ public class ActivatedActionRemakeDrawer : PropertyDrawer {
 		methodIndex = property.FindPropertyRelative("_methodIndex");
 		invokeMode = property.FindPropertyRelative("invokeMode");
 		parameters = property.FindPropertyRelative("parameters");
+		invokeMask = property.FindPropertyRelative("invokeMask");
 
 		parameterValues.Clear();
 		for (int i = 0; i < parameters.arraySize; i++) {
