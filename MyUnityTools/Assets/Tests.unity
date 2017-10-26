@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369658139
 GameObject:
@@ -302,7 +302,69 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &531718357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 531718360}
+  - component: {fileID: 531718359}
+  - component: {fileID: 531718358}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &531718358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531718357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &531718359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531718357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &531718360
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531718357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626418898
 GameObject:
@@ -400,7 +462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646052712
 GameObject:
@@ -498,7 +560,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698215970
 GameObject:
@@ -596,7 +658,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965170139
 GameObject:
@@ -631,28 +693,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf44e7a8bd2546a6b62ccf7d43ade37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objective: {fileID: 1286961857}
+  objective: {fileID: 1632480646}
   objectiveOffset: {x: 0, y: 0, z: 0}
-  objectiveBase: {fileID: 0}
-  objectiveBaseOffset: {x: 0, y: 5, z: 0}
+  objectiveBase: {fileID: 1632480646}
+  objectiveBaseOffset: {x: 0, y: 0, z: 0}
   inputs: {fileID: 965170146}
-  _lockCursor: 1
-  lockToTransform: 1
+  _lockCursor: 0
+  lockToTransform: 0
   currentDistance: 5
   zoomSpeed: 10
   collisionMargin: 2
   collisionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   maxDistance: 10
   minDistance: 0
-  movementSmoothness: 0.07
+  movementSmoothness: 0.02
   maxPitch: 85
-  minPitch: -75
-  rotationSpeed: {x: 4, y: 4, z: 1}
-  pitch: 70.44381
-  yaw: 107.21608
-  roll: 0.00000510125
+  minPitch: -70
+  rotationSpeed: {x: 4, y: 3.5, z: 1}
+  pitch: 0
+  yaw: 0
+  roll: 0
   rotationSmoothness: 0.01
 --- !u!81 &965170141
 AudioListener:
@@ -722,7 +784,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &965170146
 MonoBehaviour:
@@ -760,24 +822,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test:
     invokeMode: 3
-    _target: {fileID: 965170144}
+    _target: {fileID: 1632480646}
     parameters:
-    - name: Value
-      type: System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    - name: Target
+      type: UnityEngine.Transform, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       isGeneric: 0
-      objectParameter: {fileID: 0}
-      colorParameter: {r: 0, g: 0, b: 0, a: 0}
-      vectorParameter: {x: 0, y: 0, z: 0}
-      stringParameter: 
-      boolParameter: 1
-      isSwitch: 0
-      floatParameter: 0
-      doubleParameter: 0
-      intParameter: 0
-    - name: 
-      type: 
-      isGeneric: 0
-      objectParameter: {fileID: 0}
+      objectParameter: {fileID: 965170145}
       colorParameter: {r: 0, g: 0, b: 0, a: 0}
       vectorParameter: {x: 0, y: 0, z: 0}
       stringParameter: 
@@ -798,73 +849,67 @@ MonoBehaviour:
       floatParameter: 0
       doubleParameter: 0
       intParameter: 0
-    _methodIndex: 63
+    - name: 
+      type: 
+      isGeneric: 0
+      objectParameter: {fileID: 0}
+      colorParameter: {r: 0, g: 0, b: 0, a: 0}
+      vectorParameter: {x: 0, y: 0, z: 0}
+      stringParameter: 
+      boolParameter: 0
+      isSwitch: 0
+      floatParameter: 0
+      doubleParameter: 0
+      intParameter: 0
+    _methodIndex: 6
+    invokeMask: 82
+    isEnabled: 0
     methodNames:
-    - ResetWorldToCameraMatrix()
-    - ResetProjectionMatrix()
-    - ResetAspect()
-    - ResetFieldOfView()
-    - ResetStereoViewMatrices()
-    - ResetStereoProjectionMatrices()
-    - ResetTransparencySortSettings()
-    - Render()
-    - ResetReplacementShader()
-    - ResetCullingMatrix()
-    - RenderDontRestore()
-    - RemoveAllCommandBuffers()
-    - OnlyUsedForTesting1()
-    - OnlyUsedForTesting2()
-    - DoClear()
-    - WorldToScreenPoint(Vector3 position)
-    - WorldToViewportPoint(Vector3 position)
-    - ViewportToWorldPoint(Vector3 position)
-    - ScreenToWorldPoint(Vector3 position)
-    - ScreenToViewportPoint(Vector3 position)
-    - ViewportToScreenPoint(Vector3 position)
-    - ViewportPointToRay(Vector3 position)
-    - ScreenPointToRay(Vector3 position)
-    - FireOnPreCull(Camera cam)
-    - FireOnPreRender(Camera cam)
-    - FireOnPostRender(Camera cam)
-    - SetupCurrent(Camera cur)
-    - RenderToCubemap(Cubemap cubemap)
-    - RenderToCubemap(RenderTexture cubemap)
-    - CopyFrom(Camera other)
+    - DetachChildren()
+    - SetAsFirstSibling()
+    - SetAsLastSibling()
+    - SetParent(Transform parent)
+    - Translate(Vector3 translation)
+    - Rotate(Vector3 eulerAngles)
+    - LookAt(Transform target)
+    - LookAt(Vector3 worldPosition)
+    - TransformDirection(Vector3 direction)
+    - InverseTransformDirection(Vector3 direction)
+    - TransformVector(Vector3 vector)
+    - InverseTransformVector(Vector3 vector)
+    - TransformPoint(Vector3 position)
+    - InverseTransformPoint(Vector3 position)
+    - SetSiblingIndex(Int index)
     - SendMessageUpwards(String methodName)
     - SendMessage(String methodName)
     - BroadcastMessage(String methodName)
-    - RenderWithShader(Shader shader, String replacementTag)
-    - SetReplacementShader(Shader shader, String replacementTag)
-    - RenderToCubemap(Cubemap cubemap, Int faceMask)
-    - RenderToCubemap(RenderTexture cubemap, Int faceMask)
-    - Setter::Fov(Float value)
-    - Setter::Near(Float value)
-    - Setter::Far(Float value)
-    - Setter::FieldOfView(Float value)
-    - Setter::NearClipPlane(Float value)
-    - Setter::FarClipPlane(Float value)
-    - Setter::AllowHDR(Boolean value)
-    - Setter::Hdr(Boolean value)
-    - Setter::ForceIntoRenderTexture(Boolean value)
-    - Setter::AllowMSAA(Boolean value)
-    - Setter::OrthographicSize(Float value)
-    - Setter::Orthographic(Boolean value)
-    - Setter::TransparencySortAxis(Vector3 value)
-    - Setter::Depth(Float value)
-    - Setter::Aspect(Float value)
-    - Setter::CullingMask(Int value)
-    - Setter::EventMask(Int value)
-    - Setter::TargetTexture(RenderTexture value)
-    - Setter::UseJitteredProjectionMatrixForTransparentRendering(Boolean value)
-    - Setter::StereoSeparation(Float value)
-    - Setter::StereoConvergence(Float value)
-    - Setter::StereoMirrorMode(Boolean value)
-    - Setter::TargetDisplay(Int value)
-    - Setter::UseOcclusionCulling(Boolean value)
-    - Setter::LayerCullSpherical(Boolean value)
-    - Setter::ClearStencilAfterLightingPass(Boolean value)
-    - Setter::IsOrthoGraphic(Boolean value)
-    - Setter::Enabled(Boolean value)
+    - SetParent(Transform parent, Boolean worldPositionStays)
+    - Translate(Vector3 translation, Transform relativeTo)
+    - Rotate(Vector3 axis, Float angle)
+    - LookAt(Transform target, Vector3 worldUp)
+    - LookAt(Vector3 worldPosition, Vector3 worldUp)
+    - RotateAround(Vector3 axis, Float angle)
+    - RotateAroundLocal(Vector3 axis, Float angle)
+    - Translate(Float x, Float y, Float z)
+    - Rotate(Float xAngle, Float yAngle, Float zAngle)
+    - RotateAround(Vector3 point, Vector3 axis, Float angle)
+    - TransformDirection(Float x, Float y, Float z)
+    - InverseTransformDirection(Float x, Float y, Float z)
+    - TransformVector(Float x, Float y, Float z)
+    - InverseTransformVector(Float x, Float y, Float z)
+    - TransformPoint(Float x, Float y, Float z)
+    - InverseTransformPoint(Float x, Float y, Float z)
+    - Setter::Position(Vector3 value)
+    - Setter::LocalPosition(Vector3 value)
+    - Setter::EulerAngles(Vector3 value)
+    - Setter::LocalEulerAngles(Vector3 value)
+    - Setter::Right(Vector3 value)
+    - Setter::Up(Vector3 value)
+    - Setter::Forward(Vector3 value)
+    - Setter::LocalScale(Vector3 value)
+    - Setter::Parent(Transform value)
+    - Setter::HasChanged(Boolean value)
+    - Setter::HierarchyCapacity(Int value)
     - Setter::Tag(String value)
     - Setter::Name(String value)
   links: []
@@ -964,7 +1009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097141730
 GameObject:
@@ -1062,7 +1107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286961851
 GameObject:
@@ -1160,7 +1205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310336504
 GameObject:
@@ -1258,7 +1303,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1632480644
 GameObject:
@@ -1323,7 +1368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1632480647
 MonoBehaviour:
@@ -1408,7 +1453,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1867456217
 MeshRenderer:
@@ -1559,5 +1604,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -21,7 +21,7 @@ public class Trigger : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetMouseButton(0)) {
-			test.Invoke();
+			Pull();
 		}
 	}
 
@@ -44,9 +44,10 @@ public class Trigger : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Pull this trigger. It will call OnPull, OnCallLink, OnRelease methods in this order. (this must not be called inside update)
+	/// Pull this trigger. It will call OnPull, OnCallLink, OnRelease methods in this order.
 	/// </summary>
 	public void Pull() {
+		test.Invoke();
 		if (actions[0] != null) {
 			actions[0].Invoke();
 		}
