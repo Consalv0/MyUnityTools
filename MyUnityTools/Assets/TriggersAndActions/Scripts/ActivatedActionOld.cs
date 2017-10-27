@@ -13,7 +13,7 @@ using UtilityToolsEditor;
 [System.Serializable]
 public class ActivatedEvents {
 	[HideInInspector][SerializeField] 
-	public List<ActivatedAction> activatedActions = new List<ActivatedAction>();
+	public List<ActivatedActionOld> activatedActions = new List<ActivatedActionOld>();
 
 	public void Invoke() {
 		foreach (var activatedAction in activatedActions) {
@@ -72,7 +72,7 @@ public enum InvokeMethod {
 }
 
 [System.Serializable]
-public class ActivatedAction {
+public class ActivatedActionOld {
 	public Object target;
 	public bool needUpdate = true; // Optimazation for UpdateMethods in editor
 	public int parameterInt;
@@ -316,8 +316,8 @@ public class ActivatedAction {
 
 
 #if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(ActivatedAction))]
-public class ActivatedActionDrawer : PropertyDrawer {
+[CustomPropertyDrawer(typeof(ActivatedActionOld))]
+public class ActivatedActionOlderDrawer : PropertyDrawer {
 	public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
 		return base.GetPropertyHeight(property, label) + EditorGUIUtility.singleLineHeight * 3 + 12;
 	}
@@ -328,9 +328,9 @@ public class ActivatedActionDrawer : PropertyDrawer {
 			int indexArray = 0;
 			if (property.propertyPath.IndexOf("Array.data[", System.StringComparison.Ordinal) > 0 && 
 			    System.Int32.TryParse(property.propertyPath.Split('[', ']')[1], out indexArray)) {
-				(property.GetTargetObjectOfProperty(indexArray) as ActivatedAction).UpdateMethods();
+				(property.GetTargetObjectOfProperty(indexArray) as ActivatedActionOld).UpdateMethods();
 			} else {
-				(property.GetTargetObjectOfProperty(0) as ActivatedAction).UpdateMethods();
+				(property.GetTargetObjectOfProperty(0) as ActivatedActionOld).UpdateMethods();
 			}
 		}
 

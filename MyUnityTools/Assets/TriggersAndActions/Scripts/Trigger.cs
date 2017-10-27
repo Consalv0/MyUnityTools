@@ -4,17 +4,17 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UtilityTools;
+using UnityEngine.Events;
 
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
-using UnityEngine.Events;
 #endif
 
 public class Trigger : MonoBehaviour {
-	public ActivatedActionRemake test;
+	public ActivatedAction test;
 	[HideInInspector]
-	public List<ActivatedAction> links = new List<ActivatedAction>();
+	public List<ActivatedActionOld> links = new List<ActivatedActionOld>();
 
 	List<Action> actions = new List<Action>(0);
 	BindingFlags flagsToSearch = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
@@ -64,7 +64,7 @@ public class Trigger : MonoBehaviour {
 		}
 	}
 
-	public ActivatedAction[] GetLinks() {
+	public ActivatedActionOld[] GetLinks() {
 		return links.ToArray();
 	}
 }
