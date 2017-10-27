@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UtilityTools;
 
-// #if UNITY_EDITOR using UnityEditor; using UtilityToolsEditor;
-// #endif 
+#if UNITY_EDITOR using UnityEditor; using UtilityToolsEditor;
+#endif 
 public class ActivatedEvent {
 	[SerializeField] [HideInInspector]
 	List<ActivatedAction> actions = new List<ActivatedAction>();
@@ -17,7 +17,7 @@ public class ActivatedEvent {
 	}
 }
 
-// #if UNITY_EDITOR
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ActivatedEvent), true)] public class ActivatedEventDrawer : PropertyDrawer {
 	SerializedProperty actions;
 	Rect body;
@@ -25,9 +25,13 @@ public class ActivatedEvent {
 
 	public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
 		FindPropertiesAndRects(new Rect(), property, label);
+		float height = base.GetPropertyHeight(property, label);
+		return height;
 	}  	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 	}  	void FindPropertiesAndRects(Rect position, SerializedProperty property, GUIContent label) {
+		for (int i = 0; i < actions.arraySize; i++) {
 
+		}
 	}
 }
-// #endif
+#endif
