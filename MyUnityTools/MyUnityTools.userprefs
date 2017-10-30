@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{284B531A-F1B6-CED8-F173-28A33F90F147}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TriggersAndActions/Scripts/EventConditions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UtilityTools/UtilityBoxEditor/UnityInternalResources/Editor/UnityInternalResources.cs">
     <Files>
-      <File FileName="Assets/TriggersAndActions/Scripts/Trigger.cs" Line="38" Column="3" />
+      <File FileName="Assets/TriggersAndActions/Scripts/Trigger.cs" Line="38" Column="21" />
       <File FileName="Assets/TriggersAndActions/Scripts/ActivatedEvent.cs" Line="63" Column="80" />
-      <File FileName="Assets/TriggersAndActions/Scripts/ActivatedAction.cs" Line="194" Column="18" />
-      <File FileName="Assets/TriggersAndActions/Scripts/EventConditions.cs" Line="180" Column="48" />
+      <File FileName="Assets/TriggersAndActions/Scripts/ActivatedAction.cs" Line="673" Column="23" />
+      <File FileName="Assets/TriggersAndActions/Scripts/EventConditions.cs" Line="51" Column="32" />
+      <File FileName="Assets/UtilityTools/UtilityBoxEditor/UnityInternalResources/Editor/UnityInternalResources.cs" Line="55" Column="18" />
+      <File FileName="Assets/EditorCoroutine/Scripts/CoroutineWindowExample.cs" Line="16" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

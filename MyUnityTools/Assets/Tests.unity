@@ -613,7 +613,6 @@ GameObject:
   - component: {fileID: 965170146}
   - component: {fileID: 965170140}
   - component: {fileID: 965170147}
-  - component: {fileID: 965170148}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -762,15 +761,16 @@ MonoBehaviour:
   links:
     actions:
     - callMode: 2
-      _target: {fileID: 965170148}
+      _target: {fileID: 965170139}
       parameters:
-      - name: Name
-        type: System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-        isGeneric: 0
-        objectParameter: {fileID: 0}
+      - name: Type T
+        type: System.Type, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        isGeneric: 1
+        objectParameter: {fileID: 4900000, guid: c3ed3372e9f7c43e3a24771de1e54a4f,
+          type: 3}
         colorParameter: {r: 0, g: 0, b: 0, a: 0}
         vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: IsSphere
+        stringParameter: UnityEngine.TextAsset, UnityEngine
         boolParameter: 0
         isSwitch: 0
         floatParameter: 0
@@ -800,155 +800,25 @@ MonoBehaviour:
         floatParameter: 0
         doubleParameter: 0
         intParameter: 0
-      _methodIndex: 7
-      invokeMask: 18
-      selectedMethodName: SwitchCondition(String name)
+      _methodIndex: 0
+      invokeMask: 12
+      selectedMethodName: AddComponent[T]()
       methodNames:
-      - CheckCondition()
-      - CancelInvoke()
-      - StopAllCoroutines()
-      - SelectCondition(String name)
-      - SelectCondition(Int index)
-      - SetCondition(Boolean value)
-      - SwitchCondition(Int index)
-      - SwitchCondition(String name)
-      - CancelInvoke(String methodName)
-      - StartCoroutine(String methodName)
-      - StopCoroutine(String methodName)
+      - AddComponent[T]()
+      - StopAnimation()
+      - SetActive(Boolean value)
+      - SetActiveRecursively(Boolean state)
       - SendMessageUpwards(String methodName)
       - SendMessage(String methodName)
       - BroadcastMessage(String methodName)
-      - SetCondition(Int index, Boolean value)
-      - SetCondition(String name, Boolean value)
-      - Invoke(String methodName, Float time)
-      - InvokeRepeating(String methodName, Float time, Float repeatRate)
-      - Setter::ConstantCheck(Boolean value)
-      - Setter::CheckRate(Float value)
-      - Setter::UseGUILayout(Boolean value)
-      - Setter::RunInEditMode(Boolean value)
-      - Setter::Enabled(Boolean value)
+      - AddComponent(String className)
+      - PlayAnimation(Object animation)
+      - SampleAnimation(Object clip, Float time)
+      - Setter::Layer(Int value)
+      - Setter::Active(Boolean value)
+      - Setter::IsStatic(Boolean value)
       - Setter::Tag(String value)
       - Setter::Name(String value)
---- !u!114 &965170148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965170139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fed8f95dcc4e84cb9556212362dbb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conditions:
-  - name: IsSphere
-    boolean: 0
-  satisfiedEvent:
-    actions:
-    - callMode: 2
-      _target: {fileID: 1632480648}
-      parameters:
-      - name: Value
-        type: UnityEngine.Mesh, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        isGeneric: 0
-        objectParameter: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      - name: 
-        type: 
-        isGeneric: 0
-        objectParameter: {fileID: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      - name: 
-        type: 
-        isGeneric: 0
-        objectParameter: {fileID: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      _methodIndex: 4
-      invokeMask: 82
-      selectedMethodName: Setter::SharedMesh(Mesh value)
-      methodNames:
-      - SendMessageUpwards(String methodName)
-      - SendMessage(String methodName)
-      - BroadcastMessage(String methodName)
-      - Setter::Mesh(Mesh value)
-      - Setter::SharedMesh(Mesh value)
-      - Setter::Tag(String value)
-      - Setter::Name(String value)
-  unsatisfiedEvent:
-    actions:
-    - callMode: 2
-      _target: {fileID: 1632480648}
-      parameters:
-      - name: Value
-        type: UnityEngine.Mesh, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        isGeneric: 0
-        objectParameter: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      - name: 
-        type: 
-        isGeneric: 0
-        objectParameter: {fileID: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      - name: 
-        type: 
-        isGeneric: 0
-        objectParameter: {fileID: 0}
-        colorParameter: {r: 0, g: 0, b: 0, a: 0}
-        vectorParameter: {x: 0, y: 0, z: 0}
-        stringParameter: 
-        boolParameter: 0
-        isSwitch: 0
-        floatParameter: 0
-        doubleParameter: 0
-        intParameter: 0
-      _methodIndex: 4
-      invokeMask: 82
-      selectedMethodName: Setter::SharedMesh(Mesh value)
-      methodNames:
-      - SendMessageUpwards(String methodName)
-      - SendMessage(String methodName)
-      - BroadcastMessage(String methodName)
-      - Setter::Mesh(Mesh value)
-      - Setter::SharedMesh(Mesh value)
-      - Setter::Tag(String value)
-      - Setter::Name(String value)
-  _constantCheck: 0
-  _checkRate: 0.2
 --- !u!1 &1073446711
 GameObject:
   m_ObjectHideFlags: 0

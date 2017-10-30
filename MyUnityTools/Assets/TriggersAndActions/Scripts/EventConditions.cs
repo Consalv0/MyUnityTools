@@ -44,9 +44,11 @@ public class EventConditions : MonoBehaviour {
 		if (_constantCheck) {
 			InvokeRepeating("CheckCondition", 0, _checkRate);
 		}
+		if (satisfiedEvent != null)
 		foreach (var action in satisfiedEvent.actions) {
 			action.Initialize();
-		}
+			}
+		if (unsatisfiedEvent != null)
 		foreach (var action in unsatisfiedEvent.actions) {
 			action.Initialize();
 		}

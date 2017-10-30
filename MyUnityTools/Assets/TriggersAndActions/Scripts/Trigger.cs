@@ -35,6 +35,7 @@ public class Trigger : MonoBehaviour {
 				actions.Add(null);
 			}
 		}
+		if (links != null)
 		foreach (var action in links.actions) {
 			action.Initialize();
 		}
