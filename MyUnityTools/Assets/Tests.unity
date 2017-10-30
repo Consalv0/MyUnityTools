@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -651,9 +651,9 @@ MonoBehaviour:
   maxPitch: 85
   minPitch: -70
   rotationSpeed: {x: 4, y: 3.5, z: 1}
-  pitch: 0
-  yaw: 0
-  roll: 0
+  pitch: 22.754616
+  yaw: 267.4934
+  roll: 0.0000027774931
   rotationSmoothness: 0.01
 --- !u!81 &965170141
 AudioListener:
@@ -718,13 +718,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 965170139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.13640597, y: 0.70820814, z: -0.14250797, w: -0.6778836}
   m_LocalPosition: {x: 18.96, y: 17.96, z: 7.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.75462, y: 267.4934, z: 0.000002777493}
 --- !u!114 &965170146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,68 +759,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef2418cd2610c849a4401f6fce650d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test:
-    callMode: 2
-    _target: {fileID: 965170139}
-    parameters:
-    - name: Type T
-      type: System.Type, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      isGeneric: 1
-      objectParameter: {fileID: 11500000, guid: 11fed8f95dcc4e84cb9556212362dbb7,
-        type: 3}
-      colorParameter: {r: 0, g: 0, b: 0, a: 0}
-      vectorParameter: {x: 0, y: 0, z: 0}
-      stringParameter: EventCondition, Assembly-CSharp
-      boolParameter: 0
-      isSwitch: 0
-      floatParameter: 0
-      doubleParameter: 0
-      intParameter: 0
-    - name: 
-      type: 
-      isGeneric: 0
-      objectParameter: {fileID: 0}
-      colorParameter: {r: 0, g: 0, b: 0, a: 0}
-      vectorParameter: {x: 0, y: 0, z: 0}
-      stringParameter: 
-      boolParameter: 0
-      isSwitch: 0
-      floatParameter: 0
-      doubleParameter: 0
-      intParameter: 0
-    - name: 
-      type: 
-      isGeneric: 0
-      objectParameter: {fileID: 0}
-      colorParameter: {r: 0, g: 0, b: 0, a: 0}
-      vectorParameter: {x: 0, y: 0, z: 0}
-      stringParameter: 
-      boolParameter: 0
-      isSwitch: 0
-      floatParameter: 0
-      doubleParameter: 0
-      intParameter: 0
-    _methodIndex: 0
-    invokeMask: 12
-    isEnabled: 0
-    selectedMethodName: AddComponent[T]()
-    methodNames:
-    - AddComponent[T]()
-    - StopAnimation()
-    - SetActive(Boolean value)
-    - SetActiveRecursively(Boolean state)
-    - SendMessageUpwards(String methodName)
-    - SendMessage(String methodName)
-    - BroadcastMessage(String methodName)
-    - AddComponent(String className)
-    - PlayAnimation(Object animation)
-    - SampleAnimation(Object clip, Float time)
-    - Setter::Layer(Int value)
-    - Setter::Active(Boolean value)
-    - Setter::IsStatic(Boolean value)
-    - Setter::Tag(String value)
-    - Setter::Name(String value)
-  links: []
+  links:
+    actions:
+    - callMode: 2
+      _target: {fileID: 965170148}
+      parameters:
+      - name: Name
+        type: System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: IsSphere
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      _methodIndex: 7
+      invokeMask: 18
+      selectedMethodName: SwitchCondition(String name)
+      methodNames:
+      - CheckCondition()
+      - CancelInvoke()
+      - StopAllCoroutines()
+      - SelectCondition(String name)
+      - SelectCondition(Int index)
+      - SetCondition(Boolean value)
+      - SwitchCondition(Int index)
+      - SwitchCondition(String name)
+      - CancelInvoke(String methodName)
+      - StartCoroutine(String methodName)
+      - StopCoroutine(String methodName)
+      - SendMessageUpwards(String methodName)
+      - SendMessage(String methodName)
+      - BroadcastMessage(String methodName)
+      - SetCondition(Int index, Boolean value)
+      - SetCondition(String name, Boolean value)
+      - Invoke(String methodName, Float time)
+      - InvokeRepeating(String methodName, Float time, Float repeatRate)
+      - Setter::ConstantCheck(Boolean value)
+      - Setter::CheckRate(Float value)
+      - Setter::UseGUILayout(Boolean value)
+      - Setter::RunInEditMode(Boolean value)
+      - Setter::Enabled(Boolean value)
+      - Setter::Tag(String value)
+      - Setter::Name(String value)
 --- !u!114 &965170148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,10 +837,118 @@ MonoBehaviour:
   m_GameObject: {fileID: 965170139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1000d7df04213489483c68c6a9f61771, type: 3}
+  m_Script: {fileID: 11500000, guid: 11fed8f95dcc4e84cb9556212362dbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolHolder: {fileID: 0}
+  conditions:
+  - name: IsSphere
+    boolean: 0
+  satisfiedEvent:
+    actions:
+    - callMode: 2
+      _target: {fileID: 1632480648}
+      parameters:
+      - name: Value
+        type: UnityEngine.Mesh, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        isGeneric: 0
+        objectParameter: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      _methodIndex: 4
+      invokeMask: 82
+      selectedMethodName: Setter::SharedMesh(Mesh value)
+      methodNames:
+      - SendMessageUpwards(String methodName)
+      - SendMessage(String methodName)
+      - BroadcastMessage(String methodName)
+      - Setter::Mesh(Mesh value)
+      - Setter::SharedMesh(Mesh value)
+      - Setter::Tag(String value)
+      - Setter::Name(String value)
+  unsatisfiedEvent:
+    actions:
+    - callMode: 2
+      _target: {fileID: 1632480648}
+      parameters:
+      - name: Value
+        type: UnityEngine.Mesh, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        isGeneric: 0
+        objectParameter: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      - name: 
+        type: 
+        isGeneric: 0
+        objectParameter: {fileID: 0}
+        colorParameter: {r: 0, g: 0, b: 0, a: 0}
+        vectorParameter: {x: 0, y: 0, z: 0}
+        stringParameter: 
+        boolParameter: 0
+        isSwitch: 0
+        floatParameter: 0
+        doubleParameter: 0
+        intParameter: 0
+      _methodIndex: 4
+      invokeMask: 82
+      selectedMethodName: Setter::SharedMesh(Mesh value)
+      methodNames:
+      - SendMessageUpwards(String methodName)
+      - SendMessage(String methodName)
+      - BroadcastMessage(String methodName)
+      - Setter::Mesh(Mesh value)
+      - Setter::SharedMesh(Mesh value)
+      - Setter::Tag(String value)
+      - Setter::Name(String value)
+  _constantCheck: 0
+  _checkRate: 0.2
 --- !u!1 &1073446711
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,42 +959,34 @@ GameObject:
   - component: {fileID: 1073446717}
   - component: {fileID: 1073446716}
   - component: {fileID: 1073446715}
-  - component: {fileID: 1073446714}
-  - component: {fileID: 1073446713}
+  - component: {fileID: 1073446712}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: 2DCube
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1073446713
-Rigidbody:
+--- !u!50 &1073446712
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073446711}
-  serializedVersion: 2
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1073446714
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1073446711}
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!23 &1073446715
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1344,6 +1452,71 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1672189124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1672189126}
+  - component: {fileID: 1672189125}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1672189125
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672189124}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1672189126
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672189124}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 7.4, y: 33.5, z: -12.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1867456215
 GameObject:
   m_ObjectHideFlags: 0

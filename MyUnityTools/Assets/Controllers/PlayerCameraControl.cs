@@ -156,7 +156,6 @@ public class PlayerCameraControlEditor : Editor {
 		serializedTarget = serializedObject.targetObject as PlayerCameraControl;
 	}
 
-	string testGUISkin = "";
 	public override void OnInspectorGUI() {
 		DrawDefaultInspector();
 
