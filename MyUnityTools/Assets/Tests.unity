@@ -761,11 +761,12 @@ MonoBehaviour:
   links:
     actions:
     - callMode: 2
-      _target: {fileID: 965170139}
+      _target: {fileID: 965170145}
       parameters:
-      - name: Type T
-        type: System.Type, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-        isGeneric: 1
+      - name: Vector
+        type: UnityEngine.Vector3, UnityEngine, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        isGeneric: 0
         objectParameter: {fileID: 4900000, guid: c3ed3372e9f7c43e3a24771de1e54a4f,
           type: 3}
         colorParameter: {r: 0, g: 0, b: 0, a: 0}
@@ -800,23 +801,55 @@ MonoBehaviour:
         floatParameter: 0
         doubleParameter: 0
         intParameter: 0
-      _methodIndex: 0
-      invokeMask: 12
-      selectedMethodName: AddComponent[T]()
+      _methodIndex: 11
+      invokeMask: 16
+      selectedMethodName: InverseTransformVector(Vector3 vector)
       methodNames:
-      - AddComponent[T]()
-      - StopAnimation()
-      - SetActive(Boolean value)
-      - SetActiveRecursively(Boolean state)
+      - DetachChildren()
+      - SetAsFirstSibling()
+      - SetAsLastSibling()
+      - SetParent(Transform parent)
+      - Translate(Vector3 translation)
+      - Rotate(Vector3 eulerAngles)
+      - LookAt(Transform target)
+      - LookAt(Vector3 worldPosition)
+      - TransformDirection(Vector3 direction)
+      - InverseTransformDirection(Vector3 direction)
+      - TransformVector(Vector3 vector)
+      - InverseTransformVector(Vector3 vector)
+      - TransformPoint(Vector3 position)
+      - InverseTransformPoint(Vector3 position)
+      - SetSiblingIndex(Int index)
       - SendMessageUpwards(String methodName)
       - SendMessage(String methodName)
       - BroadcastMessage(String methodName)
-      - AddComponent(String className)
-      - PlayAnimation(Object animation)
-      - SampleAnimation(Object clip, Float time)
-      - Setter::Layer(Int value)
-      - Setter::Active(Boolean value)
-      - Setter::IsStatic(Boolean value)
+      - SetParent(Transform parent, Boolean worldPositionStays)
+      - Translate(Vector3 translation, Transform relativeTo)
+      - Rotate(Vector3 axis, Float angle)
+      - LookAt(Transform target, Vector3 worldUp)
+      - LookAt(Vector3 worldPosition, Vector3 worldUp)
+      - RotateAround(Vector3 axis, Float angle)
+      - RotateAroundLocal(Vector3 axis, Float angle)
+      - Translate(Float x, Float y, Float z)
+      - Rotate(Float xAngle, Float yAngle, Float zAngle)
+      - RotateAround(Vector3 point, Vector3 axis, Float angle)
+      - TransformDirection(Float x, Float y, Float z)
+      - InverseTransformDirection(Float x, Float y, Float z)
+      - TransformVector(Float x, Float y, Float z)
+      - InverseTransformVector(Float x, Float y, Float z)
+      - TransformPoint(Float x, Float y, Float z)
+      - InverseTransformPoint(Float x, Float y, Float z)
+      - Setter::Position(Vector3 value)
+      - Setter::LocalPosition(Vector3 value)
+      - Setter::EulerAngles(Vector3 value)
+      - Setter::LocalEulerAngles(Vector3 value)
+      - Setter::Right(Vector3 value)
+      - Setter::Up(Vector3 value)
+      - Setter::Forward(Vector3 value)
+      - Setter::LocalScale(Vector3 value)
+      - Setter::Parent(Transform value)
+      - Setter::HasChanged(Boolean value)
+      - Setter::HierarchyCapacity(Int value)
       - Setter::Tag(String value)
       - Setter::Name(String value)
 --- !u!1 &1073446711
