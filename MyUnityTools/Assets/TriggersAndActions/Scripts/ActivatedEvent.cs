@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
- #if UNITY_EDITOR using UnityEditor;
+
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditorInternal;
-#endif 
+#endif
+
 [System.Serializable]
 public class ActivatedEvent {
 	public List<ActivatedAction> actions = new List<ActivatedAction>();
@@ -15,7 +18,8 @@ public class ActivatedEvent {
 }
 
 #if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(ActivatedEvent), true)] public class ActivatedEventDrawer : PropertyDrawer {
+[CustomPropertyDrawer(typeof(ActivatedEvent), true)]
+public class ActivatedEventDrawer : PropertyDrawer {
 	ReorderableList actionsList;
 	SerializedProperty actions;
 	bool isEnabled = false;
@@ -29,7 +33,9 @@ public class ActivatedEvent {
 		}
 		height += EditorGUIUtility.singleLineHeight * 2 + 6;
 		return height;
-	}  	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+	}
+
+	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 		EditorGUI.BeginProperty(position, label, property);
 		actionsList.DoList(position);
 		EditorGUI.EndProperty();
@@ -48,7 +54,7 @@ public class ActivatedEvent {
 				},
 
 				drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
-				EditorGUI.PropertyField(rect, actions.GetArrayElementAtIndex(index), new GUIContent("Action[" + index + "]"));
+				EditorGUI.PropertyField(rect, actions.GetArrayElementAtIndex(index), new GUIContent("Action[" + index + "]"), true);
 				},
 				onAddCallback = (ReorderableList list) => {
 					SerializedProperty element;
