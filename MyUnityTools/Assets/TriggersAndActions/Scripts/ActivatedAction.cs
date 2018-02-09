@@ -39,9 +39,12 @@ public class ActivatedAction {
 	}
 
 	public void Invoke() {
+		if (callMode == InvokeMode.RuntimeAndEditor) {
+			isEnabled = false;
+		}
 		Initialize();
-		if (callMode == InvokeMode.RuntimeOnly && Application.isEditor) return;
 		if (callMode == InvokeMode.Off || selectedMethodInfo == null) return;
+		//if (callMode == InvokeMode.RuntimeOnly && Application.isEditor) return;
 		if ((invokeMask & InvokeMask.NoInvoke) > 0) return;
 		if ((invokeMask & InvokeMask.MethodIsGeneric) > 0) {
 			if ((invokeMask & InvokeMask.NoParameters) > 0) {
@@ -351,7 +354,7 @@ public class ActivatedActionDrawer : PropertyDrawer {
 	string[] methodNames = new string[0];
 	int methodIndexSelection;
 	Rect propertyRect, headerRect, targetRect, tabRect, prefixRect, navigationRect, bodyRect;
-	Rect invokeModeRect, methodRect;
+	Rect invokeModeRect, methodRect, warningRect;
 	//ActivatedAction activatedAction;
 	SerializedProperty parameters;
 	List<Rect> parameterRects = new List<Rect>();
@@ -387,6 +390,11 @@ public class ActivatedActionDrawer : PropertyDrawer {
 		EditorGUI.indentLevel = 0;
 		DrawBody();
 
+		if (callMode.enumValueIndex == (int)ActivatedAction.InvokeMode.RuntimeAndEditor) {
+			GUIContent warn = EditorGUIUtility.IconContent("console.warnicon.sml");
+			warn.tooltip = "Editor mode is used for editing in Play Mode, remember to make it RuntimeOnly";
+			GUI.Box(warningRect, warn, "ExposablePopupItem");
+		}
 		EditorGUI.PrefixLabel(prefixRect, new GUIContent(label.text + "()"));
 		target.objectReferenceValue =
 			EditorGUI.ObjectField(targetRect, new GUIContent(), target.objectReferenceValue, typeof(Object), true);
@@ -601,6 +609,12 @@ public class ActivatedActionDrawer : PropertyDrawer {
 		navigationRect = new Rect(EditorGUIUtility.labelWidth + 20 + EditorGUI.IndentedRect(propertyRect).x - 14, targetRect.y + 1,
 															27, EditorGUIUtility.singleLineHeight + 1);
 
+		warningRect = new Rect(prefixRect);
+		warningRect.x += prefixRect.width * 0.75F;
+		warningRect.y += 2;
+		warningRect.height = EditorGUIUtility.singleLineHeight;
+		warningRect.width = 27;
+
 		bodyRect = new Rect(propertyRect);
 		bodyRect.y += headerRect.height; bodyRect.height -= headerRect.height;
 
@@ -796,6 +810,7 @@ public class NavigationPopup : PopupWindowContent {
 	void GetNavigationContent() {
 		objects.Clear();
 		componentNames = new Queue<GUIContent[]>();
+		if (target.objectReferenceValue == null) target.objectReferenceValue = target.serializedObject.targetObject;
 		if ((target.objectReferenceValue as GameObject)) {
 			var obtainedValues = (target.objectReferenceValue as GameObject).GetComponents<Component>().ToList();
 			for (int i = 0; i < obtainedValues.Count(); i++) {

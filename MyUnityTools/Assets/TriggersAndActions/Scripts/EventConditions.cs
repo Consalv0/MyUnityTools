@@ -44,11 +44,11 @@ public class EventConditions : MonoBehaviour {
 		if (_constantCheck) {
 			InvokeRepeating("CheckCondition", 0, _checkRate);
 		}
-		if (satisfiedEvent != null)
+		if (isSatisfyed && satisfiedEvent != null)
 		foreach (var action in satisfiedEvent.actions) {
 			action.Initialize();
 			}
-		if (unsatisfiedEvent != null)
+		if (!isSatisfyed && unsatisfiedEvent != null)
 		foreach (var action in unsatisfiedEvent.actions) {
 			action.Initialize();
 		}
@@ -125,17 +125,16 @@ public class EventConditionDrawer : PropertyDrawer {
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 		name = property.FindPropertyRelative("name");
 		boolean = property.FindPropertyRelative("boolean");
-		position = EditorGUI.PrefixLabel(position, label);
 
 		nameRect = position;
 		nameRect.height = EditorGUIUtility.singleLineHeight;
-		nameRect.x += 16;
-		nameRect.width -= 16;
+		nameRect.x += 25;
+		nameRect.width -= 25;
 		booleanRect = position;
-		booleanRect.width = 16;
+		booleanRect.width = 25;
 
 		EditorGUI.PropertyField(booleanRect, boolean, GUIContent.none);
-		EditorGUI.PropertyField(nameRect, name, GUIContent.none);
+		EditorGUI.DelayedTextField(nameRect, name, GUIContent.none);
 	}
 }
 
@@ -159,6 +158,20 @@ public class EventConditionsEditor : Editor {
 				rect.x += 30;
 				rect.width -= 30;
 				EditorGUI.PropertyField(rect, conditions.GetArrayElementAtIndex(index));
+				if (GUI.changed) {
+					conditions.GetArrayElementAtIndex(index).FindPropertyRelative("name").stringValue =
+						conditions.GetArrayElementAtIndex(index).FindPropertyRelative("name").stringValue.Trim();
+					if (conditions.GetArrayElementAtIndex(index).FindPropertyRelative("name").stringValue.Length == 0)
+						serializedObject.Update();
+
+					for (int j = 0; j < conditions.arraySize; j++) {
+						if (index == j) continue;
+						if (conditions.GetArrayElementAtIndex(index).FindPropertyRelative("name").stringValue
+							== conditions.GetArrayElementAtIndex(j).FindPropertyRelative("name").stringValue) {
+							serializedObject.Update();
+						}
+					}
+				}
 				rect.x -= 25;
 				rect.width = 30;
 				EditorGUI.LabelField(rect, index.ToString());
@@ -166,13 +179,12 @@ public class EventConditionsEditor : Editor {
 			onAddCallback = (ReorderableList list) => {
 				list.serializedProperty.InsertArrayElementAtIndex(list.count == 0 ? 0 : list.count - 1);
 				SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(list.count - 1);
-				element.FindPropertyRelative("name").stringValue = "Condition " + list.count;
+				element.FindPropertyRelative("name").stringValue = "Condition" + list.count;
 				element.FindPropertyRelative("boolean").boolValue = false;
 			},
 			drawHeaderCallback = (Rect position) => {
 				position.x += 30;
 				position.width -= 30;
-				EditorGUI.LabelField(position, conditions.displayName);
 				position.x += EditorGUIUtility.labelWidth;
 				position.width -= EditorGUIUtility.labelWidth;
 				EditorGUI.LabelField(position, "Values");
