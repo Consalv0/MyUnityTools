@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 965170140}
   - component: {fileID: 965170147}
   - component: {fileID: 965170148}
+  - component: {fileID: 965170149}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -867,6 +868,24 @@ MonoBehaviour:
     actions: []
   _constantCheck: 1
   _checkRate: 0.2
+--- !u!114 &965170149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 965170139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9ecc096538fa4489f01ff9b79a4d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolID: 0
+  poolPrefab: {fileID: 0}
+  parenting: 1
+  modifyState: 1
+  sendMessage: 1
+  growRate: 10
+  awakeSize: 0
 --- !u!1 &1073446711
 GameObject:
   m_ObjectHideFlags: 0

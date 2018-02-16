@@ -142,9 +142,9 @@ public class PoolHolder : MonoBehaviour {
 		} else {
 			pickedObject = objectsInPool.Dequeue();
 			if (sendMessage) pickedObject.SendMessageForInactive("OnRecycle");
-			objectsInPool.Enqueue(pickedObject);
 			if (sendMessage) pickedObject.SendMessageForInactive("OnReuse");
 			if (modifyState) pickedObject.SetActive(true);
+			objectsInPool.Enqueue(pickedObject);
 			return pickedObject;
 		}
 	}

@@ -1,8 +1,6 @@
 ﻿#if UNITY_EDITOR
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using UtilityTools;
 
 namespace UtilityToolsEditor {
 	public partial class EditorTool {
